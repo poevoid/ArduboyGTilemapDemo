@@ -77,22 +77,45 @@ void drawTileMap() {
 
 
 void update() {
-  handleInput();
+  switch (screen) {
+
+    case Screen::Splash:
+    if (startcounter != 0) {
+        startcounter--;
+      } else {
+        screen = Screen::Game;
+      }
+
+      break;
+
+    case Screen::Game:
+
+      handleInput();
+      break;
+  }
 }
 
 
 void render() {
   uint16_t currentPlane = arduboy.currentPlane();
-  if (currentPlane <= 0) {  //dark gray
-  }
+  switch (screen) {
+    case Screen::Splash:
+      SpritesU::drawPlusMaskFX(0, 0, punklogooutlined, FRAME(0));
+      break;
 
-  if (currentPlane <= 1) {  //gray
-    //arduboy.setCursor(0, 0);
-    //arduboy.println();
-  }
+    case Screen::Game:
+      if (currentPlane <= 0) {  //dark gray
+      }
 
-  if (currentPlane <= 2) {  //white
-  }
+      if (currentPlane <= 1) {  //gray
+        //arduboy.setCursor(0, 0);
+        //arduboy.println();
+      }
 
-  drawTileMap();
+      if (currentPlane <= 2) {  //white
+      }
+
+      drawTileMap();
+      break;
+  }
 }

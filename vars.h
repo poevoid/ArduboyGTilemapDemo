@@ -77,11 +77,17 @@ TileType tileMap[mapHeight][mapWidth]{
   { TileType::Tile35, TileType::Tile36, TileType::Tile37, TileType::Tile38, TileType::Tile39, TileType::Tile40, TileType::Tile41 },
 
 };
-
-
+int startcounter =75;
+enum class Screen : uint8_t {
+  Splash,
+  Game
+};
+Screen screen = {Screen::Splash};
 // Camera Position
-int16_t cameraX = (fullMapWidth / 2);
-int16_t cameraY = (fullMapHeight / 2);
+//int16_t cameraX = (fullMapWidth / 2);
+//int16_t cameraY = (fullMapHeight / 2);
+int16_t cameraX = (0);
+int16_t cameraY = (0);
 
 // Camera Boundaries
 constexpr int16_t cameraXMinimum = 0;
